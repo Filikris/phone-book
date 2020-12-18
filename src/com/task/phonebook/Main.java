@@ -11,6 +11,8 @@ public class Main {
         menu.addAction(new AddContactMenuAction(contactsService, in));
         menu.addAction(new ReadAllContactsMenuAction(contactsService));
         menu.addAction(new RemoveContactMenuAction(contactsService, in));
+        menu.addAction(new FindPhoneNumberMenuAction(contactsService, in));
+        menu.addAction(new FindNameMenuAction(contactsService,in));
         menu.addAction(new ExitAction());
 
         menu.run();

@@ -1,6 +1,8 @@
 package com.task.phonebook;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class AddContactMenuAction implements MenuAction{
     Scanner in;
@@ -18,8 +20,15 @@ public class AddContactMenuAction implements MenuAction{
         String name = in.nextLine();
         System.out.print("Phone: ");
         String phone = in.nextLine();
-        Contact contact = new Contact(name, phone);
-        service.add(contact);
+        String regex = "(\\+380|380|80|0)(\\d{9})";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(phone);
+        if (matcher.matches()) {
+            Contact contact = new Contact(name, phone);
+            service.add(contact);
+        } else {
+            System.out.println("Incorrect phone number");
+        }
     }
 
     @Override
