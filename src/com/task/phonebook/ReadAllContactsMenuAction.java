@@ -1,6 +1,7 @@
 package com.task.phonebook;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class ReadAllContactsMenuAction implements MenuAction {
     ContactsService service;
@@ -12,10 +13,10 @@ public class ReadAllContactsMenuAction implements MenuAction {
     @Override
     public void doAction() {
         List <Contact> contacts = service.getAll();
-        for (int i = 0; i < contacts.size(); i++) {
+        IntStream.range(0, contacts.size()).forEach(i -> {
             System.out.print((i + 1) + " -");
             System.out.println(contacts.get(i));
-        }
+        });
         System.out.println();
     }
 

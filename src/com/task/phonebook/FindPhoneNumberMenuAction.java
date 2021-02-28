@@ -2,6 +2,7 @@ package com.task.phonebook;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class FindPhoneNumberMenuAction implements MenuAction {
     ContactsService service;
@@ -17,12 +18,12 @@ public class FindPhoneNumberMenuAction implements MenuAction {
         System.out.println("Enter phone number or part of number: ");
         String phone = in.nextLine();
         List<Contact> contacts = service.getAll();
-        for (int i = 0; i < contacts.size(); i++) {
-            if (contacts.get(i).getNumber().contains(phone)) {
+        IntStream.range(0, contacts.size())
+            .filter(i -> contacts.get(i).getNumber().contains(phone))
+            .forEach(i -> {
                 System.out.print((i + 1) + " -");
                 System.out.println(contacts.get(i));
-            }
-        }
+            });
         System.out.println();
     }
 
