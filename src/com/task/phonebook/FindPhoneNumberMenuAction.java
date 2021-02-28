@@ -1,5 +1,6 @@
 package com.task.phonebook;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class FindPhoneNumberMenuAction implements MenuAction {
@@ -15,7 +16,7 @@ public class FindPhoneNumberMenuAction implements MenuAction {
     public void doAction() {
         System.out.println("Enter phone number or part of number: ");
         String phone = in.nextLine();
-        ContactsList contacts = service.getAll();
+        List<Contact> contacts = service.getAll();
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getNumber().contains(phone)) {
                 System.out.print((i + 1) + " -");

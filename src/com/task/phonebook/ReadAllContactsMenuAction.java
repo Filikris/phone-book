@@ -1,5 +1,7 @@
 package com.task.phonebook;
 
+import java.util.List;
+
 public class ReadAllContactsMenuAction implements MenuAction {
     ContactsService service;
 
@@ -9,7 +11,7 @@ public class ReadAllContactsMenuAction implements MenuAction {
 
     @Override
     public void doAction() {
-        ContactsList contacts = service.getAll();
+        List <Contact> contacts = service.getAll();
         for (int i = 0; i < contacts.size(); i++) {
             System.out.print((i + 1) + " -");
             System.out.println(contacts.get(i));

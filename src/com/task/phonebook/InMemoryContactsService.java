@@ -1,10 +1,13 @@
 package com.task.phonebook;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class InMemoryContactsService implements ContactsService {
-    private ContactsList contactsList;
+    private List <Contact> contactsList;
 
     public InMemoryContactsService() {
-        contactsList = new ContactsList();
+        contactsList = new ArrayList<>();
     }
 
     @Override
@@ -13,7 +16,7 @@ public class InMemoryContactsService implements ContactsService {
     }
 
     @Override
-    public ContactsList getAll() {
+    public List <Contact> getAll() {
         return contactsList;
     }
 

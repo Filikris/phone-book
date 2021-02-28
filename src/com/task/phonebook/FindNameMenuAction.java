@@ -1,5 +1,6 @@
 package com.task.phonebook;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class FindNameMenuAction implements MenuAction {
@@ -15,7 +16,7 @@ public class FindNameMenuAction implements MenuAction {
     public void doAction() {
         System.out.println("Enter name or part of name: ");
         String name = in.nextLine();
-        ContactsList contacts = service.getAll();
+        List<Contact> contacts = service.getAll();
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getName().startsWith(name)) {
                 System.out.print((i + 1) + " -");
